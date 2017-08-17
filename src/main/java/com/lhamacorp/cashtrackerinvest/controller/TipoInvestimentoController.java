@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,9 +34,25 @@ public class TipoInvestimentoController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<TipoInvestimentoDTO> save(@RequestBody TipoInvestimentoDTO dto,
-                                                 @RequestHeader("authorization") String token) {
+                                                    @RequestHeader("authorization") String token) {
         TipoInvestimento response = service.save(converter.convert(dto));
         return ResponseEntity.status(HttpStatus.OK).body(converter.convert(response));
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<TipoInvestimentoDTO> update(@PathVariable("id") Long id,
+                                                      @RequestBody TipoInvestimentoDTO dto,
+                                                      @RequestHeader("authorization") String token) {
+        dto.setId(id);
+        TipoInvestimento response = service.save(converter.convert(dto));
+        return ResponseEntity.status(HttpStatus.OK).body(converter.convert(response));
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> delete(@PathVariable("id") Long id,
+                                                      @RequestHeader("authorization") String token) {
+        service.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body("");
     }
 
 }
