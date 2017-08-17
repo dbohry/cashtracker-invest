@@ -3,12 +3,13 @@ package com.lhamacorp.cashtrackerinvest.entity.tipoinvestimento;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.core.annotation.AliasFor;
 
 public class TipoInvestimentoDTO {
 
     private Long id;
     private String nome;
-    private TipoRendaEnum tipoRenda;
+    private TipoRendaEnum tipoRendaEnum;
 
     public Long getId() {
         return id;
@@ -26,12 +27,12 @@ public class TipoInvestimentoDTO {
         this.nome = nome;
     }
 
-    public TipoRendaEnum getTipoRenda() {
-        return tipoRenda;
+    public TipoRendaEnum getTipoRendaEnum() {
+        return tipoRendaEnum;
     }
 
-    public void setTipoRenda(TipoRendaEnum tipoRenda) {
-        this.tipoRenda = tipoRenda;
+    public void setTipoRendaEnum(TipoRendaEnum tipoRendaEnum) {
+        this.tipoRendaEnum = tipoRendaEnum;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class TipoInvestimentoDTO {
         return new EqualsBuilder()
                 .append(id, that.id)
                 .append(nome, that.nome)
-                .append(tipoRenda, that.tipoRenda)
+                .append(tipoRendaEnum, that.tipoRendaEnum)
                 .isEquals();
     }
 
@@ -54,7 +55,7 @@ public class TipoInvestimentoDTO {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .append(nome)
-                .append(tipoRenda)
+                .append(tipoRendaEnum)
                 .toHashCode();
     }
 
@@ -63,7 +64,7 @@ public class TipoInvestimentoDTO {
         return new ToStringBuilder(this)
                 .append("id", id)
                 .append("nome", nome)
-                .append("tipoRenda", tipoRenda)
+                .append("tipoRenda", tipoRendaEnum)
                 .toString();
     }
 }

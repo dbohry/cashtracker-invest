@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.Path;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/ct/secure/tipo-investimentos")
@@ -28,8 +29,11 @@ public class TipoInvestimentoController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<List<TipoInvestimento>> getAll(@RequestHeader("authorization") String token) {
-        return ResponseEntity.status(HttpStatus.OK).body(Collections.emptyList());
+    public ResponseEntity<List<TipoInvestimentoDTO>> getAll(@RequestHeader("authorization") String token) {
+        List<TipoInvestimento> response = service.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(response.stream()
+                .map(converter::convert)
+                .collect(Collectors.toList()));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
@@ -50,7 +54,7 @@ public class TipoInvestimentoController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> delete(@PathVariable("id") Long id,
-                                                      @RequestHeader("authorization") String token) {
+                                         @RequestHeader("authorization") String token) {
         service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).body("");
     }
