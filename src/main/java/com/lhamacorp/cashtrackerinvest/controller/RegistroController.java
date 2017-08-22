@@ -1,6 +1,5 @@
 package com.lhamacorp.cashtrackerinvest.controller;
 
-import com.lhamacorp.cashtrackerinvest.entity.investimento.Investimento;
 import com.lhamacorp.cashtrackerinvest.entity.registro.Registro;
 import com.lhamacorp.cashtrackerinvest.entity.registro.RegistroConverter;
 import com.lhamacorp.cashtrackerinvest.entity.registro.RegistroDTO;
