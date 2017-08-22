@@ -1,6 +1,6 @@
 package com.lhamacorp.cashtrackerinvest.entity.investimento;
 
-import com.lhamacorp.cashtrackerinvest.entity.tipoinvestimento.TipoInvestimento;
+import com.lhamacorp.cashtrackerinvest.entity.tipoinvestimento.TipoInvestimentoDTO;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -9,7 +9,7 @@ public class InvestimentoDTO {
 
     private Long id;
     private String nome;
-    private TipoInvestimento tipoInvestimento;
+    private TipoInvestimentoDTO tipoInvestimento;
 
     public Long getId() {
         return id;
@@ -27,11 +27,11 @@ public class InvestimentoDTO {
         this.nome = nome;
     }
 
-    public TipoInvestimento getTipoInvestimento() {
+    public TipoInvestimentoDTO getTipoInvestimento() {
         return tipoInvestimento;
     }
 
-    public void setTipoInvestimento(TipoInvestimento tipoInvestimento) {
+    public void setTipoInvestimento(TipoInvestimentoDTO tipoInvestimento) {
         this.tipoInvestimento = tipoInvestimento;
     }
 

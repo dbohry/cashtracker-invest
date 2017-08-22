@@ -1,9 +1,18 @@
 package com.lhamacorp.cashtrackerinvest.entity.investimento;
 
+import com.lhamacorp.cashtrackerinvest.entity.tipoinvestimento.TipoInvestimentoConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InvestimentoConverter {
+
+    private TipoInvestimentoConverter tipoInvestimentoConverter;
+
+    @Autowired
+    public InvestimentoConverter(TipoInvestimentoConverter tipoInvestimentoConverter) {
+        this.tipoInvestimentoConverter = tipoInvestimentoConverter;
+    }
 
     public Investimento convert(InvestimentoDTO dto) {
         if (dto == null) return null;
@@ -12,7 +21,7 @@ public class InvestimentoConverter {
 
         bo.setId(dto.getId());
         bo.setNome(dto.getNome());
-        bo.setTipoInvestimento(dto.getTipoInvestimento());
+        bo.setTipoInvestimento(tipoInvestimentoConverter.convert(dto.getTipoInvestimento()));
 
         return bo;
     }
@@ -24,7 +33,7 @@ public class InvestimentoConverter {
 
         dto.setId(bo.getId());
         dto.setNome(bo.getNome());
-        dto.setTipoInvestimento(bo.getTipoInvestimento());
+        dto.setTipoInvestimento(tipoInvestimentoConverter.convert(bo.getTipoInvestimento()));
 
         return dto;
     }
