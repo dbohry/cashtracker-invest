@@ -24,7 +24,7 @@ public class TipoInvestimentoConverter {
 
         bo.setId(dto.getId());
         bo.setNome(dto.getNome());
-        bo.setTipoRendaEnum(dto.getTipoRendaEnum().getId());
+        bo.setTipoRendaEnum(dto.getTipoRendaEnum() != null ? dto.getTipoRendaEnum().getId() : null);
 
         return bo;
     }
